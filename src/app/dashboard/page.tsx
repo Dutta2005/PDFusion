@@ -99,8 +99,8 @@ export default function Dashboard() {
 
           <PDFList
             files={files}
-            onUpdateFile={handleUpdateFile}
-            onRemoveFile={handleRemoveFile}
+            onUpdateFileAction={handleUpdateFile}
+            onRemoveFileAction={handleRemoveFile}
           />
 
           {files.length > 0 && (

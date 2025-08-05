@@ -9,23 +9,23 @@ import { PDFFile } from '@/types'
 
 interface PDFListProps {
   files: PDFFile[]
-  onUpdateFile: (id: string, selectedPages: number[]) => void
-  onRemoveFile: (id: string) => void
+  onUpdateFileAction: (id: string, selectedPages: number[]) => void
+  onRemoveFileAction: (id: string) => void
 }
 
-export default function PDFList({ files, onUpdateFile, onRemoveFile }: PDFListProps) {
+export default function PDFList({ files, onUpdateFileAction, onRemoveFileAction }: PDFListProps) {
   const handlePageToggle = (fileId: string, pageNum: number, currentPages: number[]) => {
     const newPages = currentPages.includes(pageNum)
       ? currentPages.filter(p => p !== pageNum)
       : [...currentPages, pageNum].sort((a, b) => a - b)
     
-    onUpdateFile(fileId, newPages)
+    onUpdateFileAction(fileId, newPages)
   }
 
   const handleSelectAll = (fileId: string, pageCount: number, currentPages: number[]) => {
     const allPages = Array.from({ length: pageCount }, (_, i) => i + 1)
     const newPages = currentPages.length === pageCount ? [] : allPages
-    onUpdateFile(fileId, newPages)
+    onUpdateFileAction(fileId, newPages)
   }
 
   if (files.length === 0) {
@@ -59,7 +59,7 @@ export default function PDFList({ files, onUpdateFile, onRemoveFile }: PDFListPr
             <Button
               variant="outline"
               size="sm"
-              onClick={() => onRemoveFile(file.id)}
+              onClick={() => onRemoveFileAction(file.id)}
               className="border-red-500/50 text-red-400 hover:bg-red-500/10 hover:border-red-500"
             >
               <Trash2 className="h-4 w-4" />
