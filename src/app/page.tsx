@@ -207,7 +207,7 @@ export default function LandingPage() {
               PDFusion
             </span>
           </div>
-          <p>&copy; 2024 PDFusion. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} PDFusion. All rights reserved.</p>
         </div>
       </footer>
     </div>
