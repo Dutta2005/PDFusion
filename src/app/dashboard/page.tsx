@@ -58,8 +58,9 @@ export default function Dashboard() {
         const blob = await response.blob()
         const url = window.URL.createObjectURL(blob)
         const a = document.createElement('a')
+        const timestamp = Date.now()
         a.href = url
-        a.download = 'merged.pdf'
+        a.download = `merged_${timestamp}.pdf`
         document.body.appendChild(a)
         a.click()
         window.URL.revokeObjectURL(url)
